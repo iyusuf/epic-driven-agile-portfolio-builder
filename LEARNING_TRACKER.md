@@ -4,7 +4,24 @@ This file tracks all learning and portfolio-building progress across epics, grou
 
 ---
 
+
+## 🧠 Platform-Wide Vision & Goals
+
+> 🤖 **Vision:** Build a platform that can eventually be operated by a Local LLM agent under Model Context Protocol (MCP), enabling developers to spin up infra on demand, compliantly, and securely, using natural language or domain requests.
+>
+> **Strategic Objectives:**
+>
+> * Groundwork for real-world agentic systems work
+> * Provisioning and configuration as part of a platform engineering initiative to help a small team (5–10 developers) self-serve fully bootstrapped infrastructure with CI/CD and test automation
+> * Rapid skeleton service generation directly from OpenAPI contracts, staying current with evolving change requests or new features arriving mid-sprint
+> * Clean architecture conformance — automatically generating package structure and validation tests to ensure strict adherence to domain-driven design and architectural boundaries
+
+---
+
 ## 🔧 Phase 0: Infrastructure Readiness 🐳
+
+[📖 View Full Phase 0 Document](PHASE-0.md)
+
 
 | Epic ID | Title                                       | Tag            | Status       | Git Repo / Folder                   | Demo Video Link |
 |---------|---------------------------------------------|----------------|--------------|-------------------------------------|-----------------|
