@@ -30,10 +30,10 @@ This file logs task-level activities, decisions, and CLI outputs as a running re
 
 ---
 
-## ⏭️ Upcoming
-- Run cURL commands to discover:
-  - Proxmox node name
-  - Template name
-  - Storage pool
-  - Network bridge
-- Create `terraform.tfvars` to test `terraform plan`
+## 📅 2025-05-03 (continued)
+
+### ✅ Task: Output Proxmox Discovery to JSON
+- Ran enhanced `explore.pyinfra.py` script
+- Output saved to: `infra/pyinfra/explore.proxmox.json`
+- Includes node, VM template (9221), storage (`local`), bridge (`vmbr0`)
+
