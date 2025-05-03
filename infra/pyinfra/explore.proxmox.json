@@ -1,8 +1,8 @@
 {
   "node": "pve-tde",
   "template": {
-    "vmid": 8951,
-    "name": "AlmaLinux9-CI-Template"
+    "vmid": 9221,
+    "name": "Ubuntu22-CI-Template"
   },
   "storage": "local",
   "bridge": "vmbr0"

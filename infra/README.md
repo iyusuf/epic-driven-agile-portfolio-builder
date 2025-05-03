@@ -20,7 +20,7 @@
 > ℹ️ *Note: The `Makefile` at project root simplifies the use of `dev-up.sh`, `dev-down.sh`, and future CI/CD or Swarm tasks. It is kept for developer convenience and is not tied to provisioning logic.*
 
 * [x ] Set up a GitHub repo: `fill up later TODO:`
-* [ ] Create `infra/scripts/dev-up.sh` and `dev-down.sh`
+* [x ] Create `infra/scripts/dev-up.sh` and `dev-down.sh`
 * [ ] Deploy and test Docker Swarm across VMs
 * [ ] Configure Traefik with nip.io for local DNS
 * [ ] Launch local container registry for internal use
