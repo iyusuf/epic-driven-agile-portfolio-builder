@@ -1,12 +1,1 @@
-[
-  {
-    "name": "dev-vm-0oat",
-    "vmid": 2279,
-    "status": "stopped"
-  },
-  {
-    "name": "dev-vm-08am",
-    "vmid": 2526,
-    "status": "stopped"
-  }
-]
+[]
