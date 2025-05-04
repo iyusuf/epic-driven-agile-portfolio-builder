@@ -1,0 +1,9 @@
+{
+    "node": "pve-tde",
+    "template_vmid": 9221,
+    "vmid": 601,
+    "name": "dev-vm-601",
+    "storage": "local-lvm",
+    "full": true
+  }
+ 
