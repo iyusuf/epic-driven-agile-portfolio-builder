@@ -1,6 +1,6 @@
 # ⚙️ Phase 0: Infrastructure Readiness for Development 🐳
 
-> 📌 This document is intended to be saved as `Phase0.md` and referenced from `LEARNING_TRACKER.md` as part of a milestone-based learning tracker.
+> 📌 This document is intended to be saved as `PHASE-0.md` and referenced from `LEARNING_TRACKER.md` as part of a milestone-based learning tracker.
 
 ---
 
@@ -21,46 +21,42 @@
 
 **Discussion Summary:**
 
-* Moved away from Terraform and Ansible to Pyinfra for simplicity.
-* Initial Pyinfra progress was fast, but complexity crept in with resource tuning and multi-VM logic.
-* Pyinfra became flexible but hard to manage and track as scope increased.
-* Reaffirmed long-term goal: build MCP-compatible infrastructure agent.
+* ✅ Initial attempt using Pyinfra + JSON + doit showed promise
+* ❌ Pyinfra introduced friction and complexity for scaling multi-VM logic
+* 🔄 Decision: Adopt **Terraform + Ansible** as preferred tools for provisioning, configuration, and long-term maintainability
 
-**Conclusion:**
+**Updated Conclusion:**
 
-* ✅ Pyinfra + JSON + doit is **MCP- and Agentic AI-friendly** (flat, inspectable, Pythonic)
-* ❌ Terraform/Ansible, while great for state and scale, would slow down agent compatibility and increase boilerplate.
-* 🔄 Decision: stay on lightweight Python stack for now. Reintroduce Terraform **only if** modular state tracking becomes overwhelming.
+* ✅ Terraform will manage VM provisioning in Proxmox
+* ✅ Ansible will perform post-provision configuration and OS-level tasks
+* ✅ Bash + Makefile remain optional helpers for dev convenience
+* ✅ Aligns better with industry standards and platform engineering maturity
 
 ---
 
 ## 📑 Table of Contents
 
-* [🧠 Platform-Wide Vision & Goals](#-platform-wide-vision--goals)
-* [📅 2025-05-03 — Strategic Checkpoint](#-2025-05-03--strategic-checkpoint)
-* [✅ Start Here Checklist](#-start-here-checklist)
-* [🔹 Epic 0.1: Provision and Bootstrap Local Dev Infrastructure 🐳](#-epic-01-provision-and-bootstrap-local-dev-infrastructure-)
-* [🔹 Epic 0.2: Local Container Stack and Developer Bootstrap 🐳](#-epic-02-local-container-stack-and-developer-bootstrap-)
-* [🔹 Epic 0.3: DevOps Readiness and Git Integration 🐳](#-epic-03-devops-readiness-and-git-integration-)
+* [Start Here Checklist](#-start-here-checklist)
+* [Epic 0.1: Provision and Bootstrap Local Dev Infrastructure](#-epic-01-provision-and-bootstrap-local-dev-infrastructure-)
+* [Epic 0.2: Local Container Stack and Developer Bootstrap](#-epic-02-local-container-stack-and-developer-bootstrap-)
+* [Epic 0.3: DevOps Readiness and Git Integration](#-epic-03-devops-readiness-and-git-integration-)
 
 ---
 
 ### ✅ Start Here Checklist
 
-> ℹ️ *Note: The `Makefile` at project root simplifies the use of `dev-up.sh`, `dev-down.sh`, and future CI/CD or Swarm tasks. It is kept for developer convenience and is not tied to provisioning logic.*
-
-*
+> ℹ️ *Note: The `Makefile` at project root simplifies the use of `dev-up.sh`, `dev-down.sh`, and future CI/CD or Swarm tasks. It is kept for developer convenience.*
 
 ---
 
 ### 🔹 Epic 0.1: Provision and Bootstrap Local Dev Infrastructure 🐳
 
-| #     | **User Story**                                      | **Goal**                                                   | **Primary Tools**                       | **Target Outcome**                                                    |
-| ----- | --------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------- |
-| 0.1.1 | Provisioning VMs with Pyinfra                       | Automate Ubuntu VM provisioning for a repeatable sandbox   | Pyinfra + Proxmox API                   | Devs can spin up and tear down VMs using a single Python file         |
-| 0.1.2 | Base OS Setup with Cloud-Init                       | Install Docker, git, Python, Node.js via cloud-init        | Cloud-init, bash                        | VMs are developer-ready at first boot                                 |
-| 0.1.3 | Enhanced Cloud-Init with SSH & Resource Settings 🆕 | Inject SSH keys, hostname, and tune CPU/memory/disk per VM | Cloud-init, Proxmox API, Pyinfra        | Sandbox VMs are cloud-init ready with named identity and login access |
-| 0.1.4 | PostgreSQL on Dedicated VM                          | Move stateful DB from container to KVM/QEMU-hosted VM      | PostgreSQL, Proxmox, Ansible (optional) | Persistent DB aligned with production topology                        |
+| #     | **User Story**                        | **Goal**                                                 | **Primary Tools**              | **Target Outcome**                                      |
+| ----- | ------------------------------------- | -------------------------------------------------------- | ------------------------------ | ------------------------------------------------------- |
+| 0.1.1 | Provisioning VMs with Terraform       | Automate Ubuntu VM provisioning for a repeatable sandbox | Terraform + Proxmox Provider   | Devs can spin up and tear down VMs with declarative IaC |
+| 0.1.2 | Base OS Setup with Cloud-Init         | Install Docker, git, Python, Node.js via cloud-init      | Cloud-init, bash               | VMs are developer-ready at first boot                   |
+| 0.1.3 | Enhanced Provisioning with Ansible 🆕 | Tune CPU, memory, inject SSH keys, and setup packages    | Ansible, cloud-init, Proxmox   | Post-provision config via playbook                      |
+| 0.1.4 | PostgreSQL on Dedicated VM            | Move stateful DB from container to KVM/QEMU-hosted VM    | PostgreSQL, Terraform, Ansible | Persistent DB aligned with production topology          |
 
 ---
 
